@@ -1,0 +1,53 @@
+﻿<UserControl x:Class="TelerikSilverlightAppMap1.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:example="clr-namespace:TelerikSilverlightAppMap1"
+    xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+   >
+
+    <!--<UserControl.Resources>
+        <example:ShapeFileViewModel x:Key="DataContext" x:Name="ShapeResouce1"/>
+    </UserControl.Resources>-->
+
+
+
+    <Grid x:Name="LayoutRoot" Width="784" Height="484">
+        <!--<Image Name="img1" Source="{Binding Source={StaticResource DataContext}, Path=ImageSource}"  HorizontalAlignment="Left" Height="100" Margin="226,102,0,0" VerticalAlignment="Top" Width="100"/>-->
+        <!--<TextBox HorizontalAlignment="Left" Height="23" Margin="127,261,0,0" TextWrapping="Wrap" Text="{Binding Source={StaticResource DataContext}, Path=ShapefileSourceUri}"   VerticalAlignment="Top" Width="463"/>-->
+
+
+        <telerik:RadMap x:Name="radMap"
+                      
+                       >
+            <telerik:RadMap.Provider>
+                <telerik:EmptyProvider />
+            </telerik:RadMap.Provider>
+            <!--<telerik:InformationLayer x:Name="worldLayer">
+                <telerik:InformationLayer.Reader>
+                    <telerik:MapShapeReader DataSource="/TelerikSilverlightAppMap1;component/world_continents.dbf"
+                                            Source="/TelerikSilverlightAppMap1;component/world_continents.shp"
+                                            ToolTipFormat="CONTINENT"/>
+                                            
+                                            
+                </telerik:InformationLayer.Reader>
+            </telerik:InformationLayer>-->
+            <telerik:InformationLayer x:Name="europeLayer">
+                <telerik:InformationLayer.Reader>
+                    <telerik:MapShapeReader DataSource="Map/europe.dbf"
+                                            Source="Map/europe.shp"
+                                            ToolTipFormat="CNTRY_NAME"/>
+                </telerik:InformationLayer.Reader>
+                <telerik:InformationLayer.ShapeFill>
+                    <telerik:MapShapeFill Fill="#FFF7DE" Stroke="#5A636B" StrokeThickness="1" />
+                </telerik:InformationLayer.ShapeFill>
+                <telerik:InformationLayer.HighlightFill>
+                    <telerik:MapShapeFill Fill="#F7E7BD" Stroke="#5A636B" StrokeThickness="1" />
+                </telerik:InformationLayer.HighlightFill>
+            </telerik:InformationLayer>
+        </telerik:RadMap>
+    </Grid>
+</UserControl>
