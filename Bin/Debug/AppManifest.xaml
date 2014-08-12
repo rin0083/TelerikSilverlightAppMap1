@@ -3,12 +3,13 @@
     <AssemblyPart x:Name="TelerikSilverlightAppMap1" Source="TelerikSilverlightAppMap1.dll" />
     <AssemblyPart x:Name="Telerik.Windows.Controls.DataVisualization" Source="Telerik.Windows.Controls.DataVisualization.dll" />
     <AssemblyPart x:Name="Telerik.Windows.Controls" Source="Telerik.Windows.Controls.dll" />
+    <AssemblyPart x:Name="Telerik.Windows.Controls.Input" Source="Telerik.Windows.Controls.Input.dll" />
     <AssemblyPart x:Name="Telerik.Windows.Data" Source="Telerik.Windows.Data.dll" />
     <AssemblyPart x:Name="System.Xml.Linq" Source="System.Xml.Linq.dll" />
-    <AssemblyPart x:Name="System.Windows.Data" Source="System.Windows.Data.dll" />
     <AssemblyPart x:Name="System.ComponentModel.DataAnnotations" Source="System.ComponentModel.DataAnnotations.dll" />
+    <AssemblyPart x:Name="System.Windows.Data" Source="System.Windows.Data.dll" />
     <AssemblyPart Source="zh-Hans/System.Xml.Linq.resources.dll" />
-    <AssemblyPart Source="zh-Hans/System.Windows.Data.resources.dll" />
     <AssemblyPart Source="zh-Hans/System.ComponentModel.DataAnnotations.resources.dll" />
+    <AssemblyPart Source="zh-Hans/System.Windows.Data.resources.dll" />
   </Deployment.Parts>
 </Deployment>

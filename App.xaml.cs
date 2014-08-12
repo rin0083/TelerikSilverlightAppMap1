@@ -9,6 +9,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using System.Windows.Shapes;
+using System.Windows.Browser;
 
 namespace TelerikSilverlightAppMap1
 {
@@ -26,7 +27,9 @@ namespace TelerikSilverlightAppMap1
 
         private void Application_Startup(object sender, StartupEventArgs e) 
         {
-            this.RootVisual = new MainPage();
+            MainPage mp = new MainPage();
+            this.RootVisual = mp;
+            HtmlPage.RegisterScriptableObject("myMainPage", mp);
         }
 
         private void Application_Exit(object sender, EventArgs e) 
