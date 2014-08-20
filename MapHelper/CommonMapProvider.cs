@@ -16,14 +16,12 @@ using Telerik.Windows.Controls.Map;
 
 namespace TelerikSilverlightAppMap1.MapHelper
 {
- 
     public class CommonMapProvider : TiledProvider
     {
         public CommonMapProvider()
             : base()
         {
             MyMapSource source = new MyMapSource("");
-
             this.MapSources.Add(source.UniqueId, source);
         }
         /// <summary>

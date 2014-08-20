@@ -7,25 +7,30 @@
     xmlns:local="clr-namespace:TelerikSilverlightAppMap1"
 	xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
     mc:Ignorable="d"
-    d:DesignHeight="300" d:DesignWidth="400">
+    d:DesignHeight="300" Width="605.036">
 
     <!--<UserControl.Resources>
 		<local:ShapefileViewModel x:Key="DataContext" Region="south_america" />
 	</UserControl.Resources>-->
 
-    <Grid x:Name="LayoutRoot" Background="White">
+    <Grid x:Name="LayoutRoot" Background="White" RenderTransformOrigin="0.435,0.496" Margin="39,0,-321,0">
 
-        <telerik:RadMap x:Name="RadMap1" MapMouseClick="MapMouseClick">
-            <telerik:RadMap.Provider>
-                <helper:BingMapCnProvider/>
-                    <!--<telerik:BingMapProvider />-->
-                <!--<telerik:OpenStreetMapProvider />-->
-                <!--<telerik:BingMapProvider ApplicationId="AghJLZu7knk6ZkqH82ZjMjWM_b-gWhTlrD-A15qA72fVtSNpU9oz5ejC7vUxPCfd" />-->
-            </telerik:RadMap.Provider>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition x:Name="c1" Width="200"></ColumnDefinition>
+            <ColumnDefinition x:Name="c2" ></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <telerik:RadMap x:Name="RadMap1" MapMouseClick="MapMouseClick" Grid.Column="1">
+            <!--<telerik:RadMap.Provider>-->
+            <!--<helper:BingMapCnProvider.Provider/>-->
+            <!--<telerik:BingMapProvider />-->
+            <!--<telerik:OpenStreetMapProvider />-->
+            <!--<telerik:BingMapProvider ApplicationId="AghJLZu7knk6ZkqH82ZjMjWM_b-gWhTlrD-A15qA72fVtSNpU9oz5ejC7vUxPCfd" />-->
+            <!--</telerik:RadMap.Provider>-->
             <telerik:InformationLayer Name="informationLayer">
                 <telerik:InformationLayer.ItemTemplate>
                     <DataTemplate>
-                        <Border Background="Transparent">
+                        <!--<Border Background="Transparent">
                             <ToolTipService.ToolTip>
                                 <ToolTip>
                                     <ToolTip.Content>
@@ -51,11 +56,80 @@
                                 <Path Data="M1054.5088,458.105L1065.5188,458.105C1067.7278,458.105,1069.5188,459.896,1069.5188,462.105L1069.5188,473.084C1069.5188,475.293,1067.7278,477.084,1065.5188,477.084C1065.5188,477.084,1062.6868,476.831,1062.2128,479.103C1061.6608,481.751,1060.2208,489.11,1060.2208,489.11L1059.3548,489.11C1059.3548,489.11,1058.0138,482.546,1057.2888,479.106C1056.8538,477.041,1054.5088,477.084,1054.5088,477.084C1052.2998,477.084,1050.5088,475.293,1050.5088,473.084L1050.5088,462.105C1050.5088,459.896,1052.2998,458.105,1054.5088,458.105z" Fill="White" Height="32.005" StrokeStartLineCap="Flat" Stretch="Fill" StrokeEndLineCap="Flat" Stroke="Black" StrokeThickness="1" StrokeMiterLimit="10" StrokeLineJoin="Miter" Width="20.01"/>
                                 <Path  Canvas.Top="2.989" Canvas.Left="3.188" Data="M1066.6162,472.8125C1066.6212,473.9125,1065.7252,474.8125,1064.6252,474.8125L1055.2502,474.8125C1054.1502,474.8125,1053.2462,473.9125,1053.2412,472.8125L1053.1962,462.5935C1053.1912,461.4935,1054.0872,460.5935,1055.1872,460.5935L1064.5622,460.5935C1065.6622,460.5935,1066.5662,461.4935,1066.5712,462.5935z" Fill="Black" Height="14.219" Stretch="Fill" Width="13.42"/>
                             </Canvas>
-                        </Border>
+                        </Border>-->
+                        
+                        
+                        <Grid x:Name="ParentRoot" 
+					  telerik:MapLayer.Location="{Binding Location}"
+					  telerik:MapLayer.HotSpot="0.5,1"
+					  Width="90" 
+					  Height="50"
+                              MouseLeftButtonDown="Mark_MouseLeftButtonDown"
+                              >
+                            <Path Width="{Binding Width,ElementName=ParentRoot}" 
+						  Height="{Binding Height,ElementName=ParentRoot}" 
+						  Data="M978.6509,491.334L958.6109,491.334L954.4549,500.874L949.9999,491.334L930.6259,491.334C928.4169,491.334,926.6259,489.543,926.6259,487.334L926.6259,433.272C926.6259,431.063,928.4169,429.272,930.6259,429.272L978.6509,429.272C980.8599,429.272,982.6509,431.063,982.6509,433.272L982.6509,487.334C982.6509,489.543,980.8599,491.334,978.6509,491.334z" 
+						  StrokeStartLineCap="Flat" 
+						  Stretch="Fill" 
+						  StrokeEndLineCap="Flat" 
+						  Stroke="White" 
+						  StrokeThickness="1" 
+						  StrokeMiterLimit="10" 
+						  StrokeLineJoin="Miter" 
+						  Fill="#7F000000"/>
+                            <TextBlock HorizontalAlignment="Center"
+                                   VerticalAlignment="Top"
+                                   Margin="5"
+                                   TextAlignment="Center"
+                                   Foreground="White" 
+                                   FontSize="12"
+                                   Width="80"
+                                   TextWrapping="Wrap"
+                                   Text="{Binding Path=Message}"/>
+                        </Grid>
+
                     </DataTemplate>
                 </telerik:InformationLayer.ItemTemplate>
             </telerik:InformationLayer>
-            <telerik:InformationLayer Name="informationLayer2" />
+            
+            <telerik:InformationLayer Name="informationLayer2" >
+                <telerik:InformationLayer.ItemTemplate>
+                    <DataTemplate>          
+                        <Grid x:Name="ParentRoot2" 
+					  telerik:MapLayer.Location="{Binding Location}"
+					  telerik:MapLayer.HotSpot="0.5,1"
+					  Width="90" 
+					  Height="50"
+                              >
+                            <Path Width="{Binding Width,ElementName=ParentRoot2}" 
+						  Height="{Binding Height,ElementName=ParentRoot2}" 
+						  Data="M978.6509,491.334L958.6109,491.334L954.4549,500.874L949.9999,491.334L930.6259,491.334C928.4169,491.334,926.6259,489.543,926.6259,487.334L926.6259,433.272C926.6259,431.063,928.4169,429.272,930.6259,429.272L978.6509,429.272C980.8599,429.272,982.6509,431.063,982.6509,433.272L982.6509,487.334C982.6509,489.543,980.8599,491.334,978.6509,491.334z" 
+						  StrokeStartLineCap="Flat" 
+						  Stretch="Fill" 
+						  StrokeEndLineCap="Flat" 
+						  Stroke="White" 
+						  StrokeThickness="1" 
+						  StrokeMiterLimit="10" 
+						  StrokeLineJoin="Miter" 
+						  Fill="#7F000000"/>
+                            <TextBlock HorizontalAlignment="Center"
+                                   VerticalAlignment="Top"
+                                   Margin="5"
+                                   TextAlignment="Center"
+                                   Foreground="White" 
+                                   FontSize="12"
+                                   Width="80"
+                                   TextWrapping="Wrap"
+                                   Text="{Binding Path=Message}"/>
+                        </Grid>
+                    </DataTemplate>
+                </telerik:InformationLayer.ItemTemplate>
+
+            </telerik:InformationLayer>
+            <telerik:InformationLayer Name="informationLayer3">
+
+            </telerik:InformationLayer>
+
             <!--<telerik:InformationLayer x:Name="worldLayer">
                 <telerik:InformationLayer.Reader>
                     <telerik:MapShapeReader DataSource="/TelerikSilverlightAppMap1;component/world_continents.dbf"
@@ -77,7 +151,10 @@
                 </telerik:InformationLayer.HighlightFill>
             </telerik:InformationLayer>-->
         </telerik:RadMap>
-        <telerik:RadButton Name="findRouteButton"  Content="Find Route" Click="FindRouteClicked"  HorizontalAlignment="Left" Margin="38,80,0,0" VerticalAlignment="Top"/>
+        <telerik:RadButton Name="findRouteButton"  Content="Initialize Route" Click="FindRouteClicked"  HorizontalAlignment="Left" Margin="38,80,0,0" VerticalAlignment="Top"/>
+        <telerik:RadButton Name="showAmbulance"  Content="showAmbulance" Click="ShowAmbulanceClicked"  HorizontalAlignment="Left" Margin="33,158,0,0" VerticalAlignment="Top"/>
+        <telerik:RadButton Name="clearMark"  Content="ClearMark" Click="ClearMarkClicked"  HorizontalAlignment="Left" Margin="33,199,0,0" VerticalAlignment="Top"/>
+
         <telerik:RadButton Name="clearButton" 
                     Content="Clear Route" 
                     Click="ClearRouteClicked"  HorizontalAlignment="Left" Margin="33,122,0,0" VerticalAlignment="Top"/>
