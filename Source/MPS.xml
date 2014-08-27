@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<MPS>
+  <MP>
+    <Location>28.804404,113.123162</Location>
+    <Message>救护车</Message>
+    <Uri></Uri>
+  </MP>
+  <MP>
+    <Location>28.402222,113.700556</Location>
+    <Message>消防车</Message>
+    <Uri></Uri>
+  </MP>
+  <MP>
+    <Location>28.413056,113.985833</Location>
+    <Message>警车</Message>
+    <Uri></Uri>
+  </MP>
+</MPS>
