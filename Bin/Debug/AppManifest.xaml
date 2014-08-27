@@ -1,7 +1,10 @@
 ﻿<Deployment xmlns="http://schemas.microsoft.com/client/2007/deployment" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" EntryPointAssembly="TelerikSilverlightAppMap1" EntryPointType="TelerikSilverlightAppMap1.App" RuntimeVersion="5.0.61118.0">
   <Deployment.Parts>
     <AssemblyPart x:Name="TelerikSilverlightAppMap1" Source="TelerikSilverlightAppMap1.dll" />
+<<<<<<< HEAD
     <AssemblyPart x:Name="MapFactory" Source="MapFactory.dll" />
+=======
+>>>>>>> origin/master
     <AssemblyPart x:Name="System.Xml.Linq" Source="System.Xml.Linq.dll" />
     <AssemblyPart x:Name="Telerik.Windows.Controls.DataVisualization" Source="Telerik.Windows.Controls.DataVisualization.dll" />
     <AssemblyPart x:Name="Telerik.Windows.Controls" Source="Telerik.Windows.Controls.dll" />

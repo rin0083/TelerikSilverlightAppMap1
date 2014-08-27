@@ -11,12 +11,17 @@ using System.Windows.Browser;
 using Telerik.Windows.Controls.Input;
 using ItemsControl = Telerik.Windows.Controls.ItemsControl;
 using SelectionChangedEventArgs = Telerik.Windows.Controls.SelectionChangedEventArgs;
+<<<<<<< HEAD
+=======
+using TelerikSilverlightAppMap1.MapHelper;
+>>>>>>> origin/master
 using TelerikSilverlightAppMap1.MapFactory;
 
 namespace TelerikSilverlightAppMap1
 {
     public partial class MainPage : UserControl
     {
+<<<<<<< HEAD
         //private string bingApplicationId = "AghJLZu7knk6ZkqH82ZjMjWM_b-gWhTlrD-A15qA72fVtSNpU9oz5ejC7vUxPCfd";
         //private BingRouteProvider routeProvider;
 
@@ -79,6 +84,25 @@ namespace TelerikSilverlightAppMap1
         /// <summary>
         /// 将地图缩放级别暴露给JS
         /// </summary>
+=======
+        private string bingApplicationId = "AghJLZu7knk6ZkqH82ZjMjWM_b-gWhTlrD-A15qA72fVtSNpU9oz5ejC7vUxPCfd";
+        private BingRouteProvider routeProvider;
+
+        private LocationCollection routeResultPoints = new LocationCollection();
+        private MapPolyline routeLine = new MapPolyline();
+
+
+        private MapFactory.MapMarkFactory.Assemble markPointsAssemble = new MapMarkFactory.Assemble();
+        private MapFactory.MapMarkFactory.MapMarkPoints markPoints = new MapMarkFactory.Assemble().MapMarkHandle(FactoryCommand.MapMarkCommand.TelerikMapMark).InitializeMapMarkPoints();
+        private MapFactory.MapMarkFactory.MapMarkPoints routePoints = new MapMarkFactory.Assemble().MapMarkHandle(FactoryCommand.MapMarkCommand.TelerikMapMark).GetEmptyMapMarkPoints();
+        private bool firstRoutePointChecked;
+
+        MapFactory.MapTimerFacotry.IMapTimer blinkTimer = new MapFactory.MapTimerFacotry.Assemble().MapTimerHandle(FactoryCommand.MapTimerCommand.BlinkDispatcherTimer);
+
+        private RadComboBox lineColorCombo =new RadComboBox();
+        [ScriptableMember]
+        public MapFactory.MapPointFactory.MapPoints RoutePoints { get { return this.routePoints.MarkPoints; } set { this.routePoints.MarkPoints = value; } }
+>>>>>>> origin/master
         [ScriptableMember]
         public int Zoom { get { return this.RadMap1.ZoomLevel; } }
         /// <summary>
@@ -103,7 +127,11 @@ namespace TelerikSilverlightAppMap1
         [ScriptableMember]
         public double LocationLatitude(MapFactory.MapPointFactory.MapPoint point)
         {
+<<<<<<< HEAD
             return Ipoint.GetLatitude(point);
+=======
+            return point.Location.Latitude;
+>>>>>>> origin/master
         }
         /// <summary>
         /// 从MapPoint对象提取经度
@@ -113,15 +141,36 @@ namespace TelerikSilverlightAppMap1
         [ScriptableMember]
         public double LocationLongitude(MapFactory.MapPointFactory.MapPoint point)
         {
+<<<<<<< HEAD
             return Ipoint.GetLongitude(point);
+=======
+            return point.Location.Longitude;
+>>>>>>> origin/master
         }
 
         public MainPage()
         {
             InitializeComponent();
+<<<<<<< HEAD
             radmap = this.RadMap1;
             this.RadMap1.Provider = Imapprovider.GetTiledProvider();
            
+=======
+            BingMapCnProvider bmcp = new BingMapCnProvider();
+            this.RadMap1.Provider = bmcp.Provider;
+            //this.listBox.SetBinding(ItemsControl.ItemsSourceProperty, binding);
+            //this.RadMap1.Provider = new BingMapCnProvider();
+            //this.RadMap1.Provider = new OpenStreetMapProvider();
+            //SetProvider();            
+        }
+        private void SetProvider()
+        {
+            // Init route provider.
+            routeProvider = new BingRouteProvider();
+            routeProvider.ApplicationId = this.bingApplicationId;
+            routeProvider.MapControl = this.RadMap1;
+            routeProvider.RoutingCompleted += new EventHandler<RoutingCompletedEventArgs>(Provider_RoutingCompleted);
+>>>>>>> origin/master
         }
 
 
@@ -134,9 +183,26 @@ namespace TelerikSilverlightAppMap1
         {
             if (this.routePoints.MarkPoints.Count != 0)
             {
+<<<<<<< HEAD
                 this.firstRoutePointChecked = Imapmark.AddMapMarkPoint(new MapFactory.MapPointFactory.MapPoint(eventArgs.Location.Latitude, eventArgs.Location.Longitude, "目的地" + this.routePoints.MarkPoints.Count.ToString(), null), this.routePoints, this.firstRoutePointChecked);
             }    
             
+=======
+                if (this.firstRoutePointChecked == false)
+                {
+                    this.firstRoutePointChecked = true;
+                }
+                else
+                {
+                    this.routePoints.MarkPoints.Add(new MapFactory.MapPointFactory.MapPoint(eventArgs.Location.Latitude, eventArgs.Location.Longitude, "目的地" + this.routePoints.MarkPoints.Count.ToString(), null));
+                }
+            }
+            int count = this.routePoints.MarkPoints.Count;
+            //if (this.routePoints.Count > 1)
+            //{
+            //    HtmlPage.Window.Invoke("GetDirection");
+            //}
+>>>>>>> origin/master
         }
         /// <summary>
         /// 当出发点与目的地同时存在时，点击触发寻路事件，调用JS中的Bing寻路方法，获取经纬坐标组作为寻路结果，每次加载页面要初始化后使用
@@ -146,6 +212,7 @@ namespace TelerikSilverlightAppMap1
         private void FindRouteClicked(object sender, RoutedEventArgs e)
         {
             RadButton mybutton = sender as RadButton;
+<<<<<<< HEAD
             MapPolyline mymappolyline = Ipolyline.GetMapPolyline(RouteResultLocations, Icolor.GetBrushFromCombo(255, 255, 0, 0), 2);
             if (this.routePoints.MarkPoints.Count > 1)
             {
@@ -162,6 +229,67 @@ namespace TelerikSilverlightAppMap1
                     
                 }
             }
+=======
+
+            this.informationLayer3.Items.Clear();
+            //this.ErrorSummary.Visibility = Visibility.Collapsed;
+            //RouteRequest routeRequest = new RouteRequest();
+            //routeRequest.Culture = new System.Globalization.CultureInfo("zh-cn");
+            //routeRequest.Options.RoutePathType = RoutePathType.Points;
+
+            if (mybutton.Content.ToString() == "Initialize Route")
+            {
+                HtmlPage.Window.Invoke("GetDirection");
+                if (this.routePoints.MarkPoints.Count > 1)
+                {
+                    this.findRouteButton.IsEnabled = false;
+                    //foreach (Location location in this.routePoints)
+                    //{
+                    //    routeRequest.Waypoints.Add(location);
+                    //}
+                    //this.routeProvider.CalculateRouteAsync(routeRequest);
+
+
+                    RouteTest();
+                }
+                mybutton.Content = "Start Route";
+            }
+            else
+            {
+                HtmlPage.Window.Invoke("GetDirection");
+                if (this.routePoints.MarkPoints.Count > 1)
+                {
+                    this.findRouteButton.IsEnabled = false;
+                    //foreach (Location location in this.routePoints)
+                    //{
+                    //    routeRequest.Waypoints.Add(location);
+                    //}
+                    //this.routeProvider.CalculateRouteAsync(routeRequest);
+
+
+                    RouteTest();
+                }
+            }
+     
+        }
+
+
+        private void RouteTest()
+        {
+            this.findRouteButton.IsEnabled = true;
+            if (RouteResultLocations.Count != 0)
+            {                
+                routeLine.Points = RouteResultLocations;
+                routeLine.Stroke = this.GetBrushFromCombo(lineColorCombo);
+                routeLine.StrokeThickness = 2;
+                this.informationLayer3.Items.Add(routeLine);
+                RouteResultLocations.Clear();
+            }
+            //else
+            //{
+            //    this.ErrorSummary.Visibility = Visibility.Visible;
+            //}
+>>>>>>> origin/master
         }
 
 
@@ -174,11 +302,21 @@ namespace TelerikSilverlightAppMap1
         /// <param name="e"></param>
         private void ClearRouteClicked(object sender, RoutedEventArgs e)
         {
+<<<<<<< HEAD
             if (this.informationLayer4 != null && this.informationLayer4.Items.Count > 0)
             {
                 ImapAnimation.StopAnimation();
                 this.informationLayer4.Items.Clear();
             }
+=======
+            this.findRouteButton.IsEnabled = true;
+            this.firstRoutePointChecked = false;
+            this.routePoints.MarkPoints.Clear();
+            this.informationLayer3.Items.Clear();
+            this.ErrorSummary.Visibility = Visibility.Collapsed;
+            this.blinkTimer.EndTimer(sender, e);
+        }
+>>>>>>> origin/master
 
 
             if (this.routePoints.MarkPoints.Count>0)
@@ -231,6 +369,7 @@ namespace TelerikSilverlightAppMap1
             {
                 //LocationRect bestView = this.worldLayer.GetBestView(this.worldLayer.Items);
                 //this.RadMap1.SetView(bestView);
+<<<<<<< HEAD
             }
             else
             { 
@@ -247,10 +386,19 @@ namespace TelerikSilverlightAppMap1
         {
             //markPointsAssemble.MapMarkHandle(FactoryCommand.MapMarkCommand.TelerikMapMark).AddMapMarkPoint(new MapFactory.MapPointFactory.MapPoint(30.0332255425012, 120.88011828324, null, null), this.markPoints,true);
             this.markPoints = Imapmark.InitializeMapMarkPoints();
+=======
+            }            
+        }
+
+        private void ShowAmbulanceClicked(object sender, RoutedEventArgs e)
+        {
+            markPointsAssemble.MapMarkHandle(FactoryCommand.MapMarkCommand.TelerikMapMark).AddMapMarkPoint(new MapFactory.MapPointFactory.MapPoint(30.0332255425012, 120.88011828324, null, null), this.markPoints);
+>>>>>>> origin/master
             MapFactory.MapMarkFactory.TelerikMapMark telerikmapmark = new MapMarkFactory.TelerikMapMark();
             MapFactory.MapMarkFactory.IMapMark mapMark = telerikmapmark;
             mapMark.MarkPointsCompleted += MapMarkHandle;
             telerikmapmark.OnMarkPointsCompleted(new MapMarkFactory.MarkPointsCompletedEventArgs(this.markPoints));
+<<<<<<< HEAD
             List<double> a = new List<double>();
             for (int i = 0; i < this.markPoints.MarkPoints.Count-1; i++)
             { 
@@ -264,6 +412,12 @@ namespace TelerikSilverlightAppMap1
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
+=======
+            LocationRect bestView = this.informationLayer.GetBestView(this.informationLayer.Items);
+            this.RadMap1.SetView(bestView);
+        }
+
+>>>>>>> origin/master
         private void MapMarkHandle(object sender, MapFactory.MapMarkFactory.MarkPointsCompletedEventArgs e)
         {
             Binding binding = new Binding();
@@ -272,6 +426,7 @@ namespace TelerikSilverlightAppMap1
             this.informationLayer.SetBinding(ItemsControl.ItemsSourceProperty, binding);
         }
 
+<<<<<<< HEAD
         /// <summary>
         /// 清除热点组
         /// </summary>
@@ -338,6 +493,27 @@ namespace TelerikSilverlightAppMap1
           
         }
 
+=======
+
+        private void ClearMarkClicked(object sender, RoutedEventArgs e)
+        {
+            this.markPointsAssemble.MapMarkHandle(FactoryCommand.MapMarkCommand.TelerikMapMark).ClearMapMarkPoint(this.markPoints);
+        }
+
+        private void Mark_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            Grid control = sender as Grid;
+            MapFactory.MapPointFactory.MapPoint point = control.DataContext as MapFactory.MapPointFactory.MapPoint;
+            int count = this.markPoints.MarkPoints.Count;
+            this.routePoints.MarkPoints.Clear();
+            this.routePoints.MarkPoints.Add(point);
+     
+            Binding binding = new Binding();
+            binding.Source = this.routePoints.MarkPoints;
+            this.informationLayer2.SetBinding(ItemsControl.ItemsSourceProperty, binding);
+            blinkTimer.Element = control;
+            blinkTimer.StartTimer(sender, e);
+>>>>>>> origin/master
         }
     }
 

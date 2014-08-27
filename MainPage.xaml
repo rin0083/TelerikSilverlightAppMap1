@@ -19,7 +19,11 @@
             <ColumnDefinition x:Name="c1" Width="200"></ColumnDefinition>
             <ColumnDefinition x:Name="c2" ></ColumnDefinition>
         </Grid.ColumnDefinitions>
+<<<<<<< HEAD
         <telerik:RadMap x:Name="RadMap1" Center="28.2001313955183,112.985413445877" ZoomLevel="8" ZoomChanged="RadMap1_ZoomChanged_1" MapMouseClick="MapMouseClick" Grid.Column="1">
+=======
+        <telerik:RadMap x:Name="RadMap1" MapMouseClick="MapMouseClick" Grid.Column="1">
+>>>>>>> origin/master
             <!--<telerik:RadMap.Provider>-->
             <!--<helper:BingMapCnProvider.Provider/>-->
             <!--<telerik:BingMapProvider />-->
@@ -87,9 +91,55 @@
                                    Text="{Binding Path=Message}"/>
                         </Grid>
 
+<<<<<<< HEAD
                     </DataTemplate>
                 </telerik:InformationLayer.ItemTemplate>
             </telerik:InformationLayer>
+            
+            <telerik:InformationLayer Name="informationLayer2" >
+                <telerik:InformationLayer.ItemTemplate>
+                    <DataTemplate>          
+                        <Grid x:Name="ParentRoot2" 
+					  telerik:MapLayer.Location="{Binding Location}"
+					  telerik:MapLayer.HotSpot="0.5,1"
+					  Width="90" 
+					  Height="50"
+                              >
+                            <Path Width="{Binding Width,ElementName=ParentRoot2}" 
+						  Height="{Binding Height,ElementName=ParentRoot2}" 
+						  Data="M978.6509,491.334L958.6109,491.334L954.4549,500.874L949.9999,491.334L930.6259,491.334C928.4169,491.334,926.6259,489.543,926.6259,487.334L926.6259,433.272C926.6259,431.063,928.4169,429.272,930.6259,429.272L978.6509,429.272C980.8599,429.272,982.6509,431.063,982.6509,433.272L982.6509,487.334C982.6509,489.543,980.8599,491.334,978.6509,491.334z" 
+						  StrokeStartLineCap="Flat" 
+						  Stretch="Fill" 
+						  StrokeEndLineCap="Flat" 
+						  Stroke="White" 
+						  StrokeThickness="1" 
+						  StrokeMiterLimit="10" 
+						  StrokeLineJoin="Miter" 
+						  Fill="#7F000000"/>
+                            <TextBlock HorizontalAlignment="Center"
+                                   VerticalAlignment="Top"
+                                   Margin="5"
+                                   TextAlignment="Center"
+                                   Foreground="White" 
+                                   FontSize="12"
+                                   Width="80"
+                                   TextWrapping="Wrap"
+                                   Text="{Binding Path=Message}"/>
+                        </Grid>
+=======
+>>>>>>> origin/master
+                    </DataTemplate>
+                </telerik:InformationLayer.ItemTemplate>
+
+            </telerik:InformationLayer>
+            <telerik:InformationLayer Name="informationLayer3">
+
+            </telerik:InformationLayer>
+            <telerik:InformationLayer Name="informationLayer4">
+
+            </telerik:InformationLayer>
+<<<<<<< HEAD
+=======
             
             <telerik:InformationLayer Name="informationLayer2" >
                 <telerik:InformationLayer.ItemTemplate>
@@ -128,9 +178,8 @@
             <telerik:InformationLayer Name="informationLayer3">
 
             </telerik:InformationLayer>
-            <telerik:InformationLayer Name="informationLayer4">
 
-            </telerik:InformationLayer>
+>>>>>>> origin/master
             <!--<telerik:InformationLayer x:Name="worldLayer">
                 <telerik:InformationLayer.Reader>
                     <telerik:MapShapeReader DataSource="/TelerikSilverlightAppMap1;component/world_continents.dbf"

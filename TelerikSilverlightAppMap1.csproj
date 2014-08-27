@@ -93,6 +93,21 @@
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MapFactory\FactoryCommand.cs" />
+    <Compile Include="MapFactory\MapKeyFactory.cs" />
+    <Compile Include="MapFactory\MapMarkFactory.cs" />
+    <Compile Include="MapFactory\MapPointFactory.cs" />
+    <Compile Include="MapFactory\MapProviderFactory.cs" />
+    <Compile Include="MapFactory\MapRouteFactory.cs" />
+    <Compile Include="MapFactory\MapSourceFactory.cs" />
+    <Compile Include="MapFactory\MapTimerFactory.cs" />
+    <Compile Include="MapFactory\MapUriFactory.cs" />
+    <Compile Include="MapHelper\BingMapCn.cs" />
+    <Compile Include="MapHelper\BingRoute.cs" />
+    <Compile Include="MapHelper\ColorStringConverter.cs" />
+    <Compile Include="MapHelper\CommonMapProvider.cs" />
+    <Compile Include="MapHelper\ControllCenter.cs" />
+    <Compile Include="MapHelper\UriHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

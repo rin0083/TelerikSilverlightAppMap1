@@ -255,6 +255,9 @@ C:\Users\Administrator\Desktop\一千遍\TelerikSilverlightAppMap1\TelerikSilver
 C:\Users\Administrator\Desktop\一千遍\TelerikSilverlightAppMap1\TelerikSilverlightAppMap1\obj\Debug\TelerikSilverlightAppMap1.dll
 C:\Users\Administrator\Desktop\一千遍\TelerikSilverlightAppMap1\TelerikSilverlightAppMap1\obj\Debug\TelerikSilverlightAppMap1.pdb
 C:\Users\Administrator\Desktop\一千遍\TelerikSilverlightAppMap1\TelerikSilverlightAppMap1\obj\Debug\XapCacheFile.xml
+<<<<<<< HEAD
 C:\Users\Administrator\Desktop\一千遍\TelerikSilverlightAppMap1\TelerikSilverlightAppMap1\obj\Debug\TelerikSilverlightAppMap1.csprojResolveAssemblyReference.cache
 C:\Users\Administrator\Desktop\一千遍\TelerikSilverlightAppMap1\TelerikSilverlightAppMap1\Bin\Debug\MapFactory.dll
 C:\Users\Administrator\Desktop\一千遍\TelerikSilverlightAppMap1\TelerikSilverlightAppMap1\Bin\Debug\MapFactory.pdb
+=======
+>>>>>>> origin/master
